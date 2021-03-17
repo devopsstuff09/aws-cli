@@ -1,0 +1,2 @@
+####to create a s3 bucket from aws cli########
+#aws s3api create-bucket --bucket avengers-kiran-liux2  --create-bucket-configuration LocationConstraint=ap-south-1
