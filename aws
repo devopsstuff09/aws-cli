@@ -5,3 +5,40 @@
 or 
 
 #aws s3 mb s3://pavan129876
+
+
+#To crreate a s3 bucket from cli to aws
+
+aws s3 mb s3://my-first-backup-bucket
+
+#To upload a file
+
+aws s3 cp "/Users/kiransmac/Downloads/AWS-SA/Labs/LAB-01/mywebsite/index.html" s3://mysecond-bucket/
+
+#To upload multiple files to bucket
+
+aws s3 cp "/Users/kiransmac/Downloads/AWS-SA/Labs/LAB-01/mywebsite/" s3://mysecond-bucket --recursive
+
+#To download files from bucket
+
+aws s3 cp s3://mysecond-bucket/index.html ./  (# u can try --recursive for multiple files) 
+
+#To Delete Multiple files from bucket through Cli
+
+aws s3 rm s3://mysecond-bucket/ --recursive
+
+#to remove bucket 
+
+aws s3 rb s3://mysecond-bucket
+
+#To set the block public access configuration for a bucket
+
+aws s3api put-public-access-block \
+    --bucket mysecond-bucket \
+    --public-access-block-configuration "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"
+    
+#To Configure the bucket for Static Website Hosting on s3
+
+aws s3 website s3://mysecond-bucket/ --index-document index.html --error-document error.html
+
+aws s3api put-object-acl --bucket mysecond-bucket --key exampleobject --acl public-read
